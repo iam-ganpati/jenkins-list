@@ -2,12 +2,11 @@ pipeline {
     agent any
 
      parameters {
-        string(name: 'JENKINS_USERNAME', description: 'Enter your Jenkins username')
-        password(name: 'JENKINS_API_TOKEN', description: 'Enter your Jenkins API Token (will be hidden)')
+        string(name: 'JENKINS_URL', defaultValue: 'http://13.217.37.46:8080/', description: 'Jenkins URL')
     }
 
     environment {
-        JENKINS_URL = 'http://13.217.37.46:8080/' // Replace with your Jenkins base URL
+        SCRIPT_FILE = 'jenkins4.sh'
     }
 
     stages {
