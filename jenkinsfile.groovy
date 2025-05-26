@@ -21,10 +21,12 @@ pipeline {
 
         stage('Run Export Script') {
             steps {
-                sh '''
-                    chmod +x jenkins4.sh
-                    ./jenkins4.sh "$JENKINS_URL" "$JENKINS_USERNAME" "$JENKINS_API_TOKEN"
-                '''
+                withCredentials([usernamePassword(credentialsId: 'jenkins-auth', usernameVariable: 'JENKINS_USERNAME', passwordVariable: 'JENKINS_API_TOKEN')]) {
+                    sh '''
+                        chmod +x "$SCRIPT_FILE"
+                        ./"$SCRIPT_FILE" "$JENKINS_URL" "$JENKINS_USERNAME" "$JENKINS_API_TOKEN"
+                    '''
+                }
             }
         }
 
