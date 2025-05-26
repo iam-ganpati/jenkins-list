@@ -15,7 +15,7 @@ pipeline {
             steps {
                 git branch: 'main',
                 //credentialsId: 'your-git-credential-id',  // 👈 Git credentials
-                url: 'https://github.com/your-org/your-repo.git'
+                url: 'https://github.com/iam-ganpati/jenkins-list'
             }
         }
 
