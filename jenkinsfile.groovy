@@ -22,7 +22,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'jenkins_api_creds', usernameVariable: 'JENKINS_USER', passwordVariable: 'JENKINS_TOKEN')]) {
                     sh '''
-                        chmod +x $SCRIPT_NAME
+                        chmod +x $SCRIPT_FILE
                         ./$SCRIPT_NAME "$JENKINS_URL" "$JENKINS_USER" "$JENKINS_TOKEN"
                     '''
                 }
