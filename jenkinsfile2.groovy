@@ -38,7 +38,7 @@ pipeline {
                         export JENKINS_URL="${JENKINS_URL}"
                         export JENKINS_USER="${JENKINS_USER}"
                         export JENKINS_TOKEN="${JENKINS_TOKEN}"
-                        ./jenkins_job_list.sh
+                        ./$SCRIPT_FILE
                     '''
                 }
         }
