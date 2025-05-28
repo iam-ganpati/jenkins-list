@@ -22,8 +22,8 @@ pipeline {
         }
 
         stage('Run Export Script') {
-           /* steps {
-                wrap([$class: 'MaskPasswordsBuildWrapper']){
+           steps {
+                /*wrap([$class: 'MaskPasswordsBuildWrapper']){
                     sh '''
                         rm -f jenkins_jobs_*.csv
                         chmod +x $SCRIPT_FILE
@@ -41,6 +41,7 @@ pipeline {
                         ./jenkins_job_list.sh
                     '''
                 }
+        }
                 }
         
         stage('Archive Output') {
