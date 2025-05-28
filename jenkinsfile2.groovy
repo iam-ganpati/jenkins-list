@@ -34,6 +34,7 @@ pipeline {
             script {
                     // Do NOT pass the token as an argument
                     sh '''
+                        rm -f jenkins_jobs_*.csv
                         chmod +x $SCRIPT_FILE
                         export JENKINS_URL="${JENKINS_URL}"
                         export JENKINS_USER="${JENKINS_USER}"
