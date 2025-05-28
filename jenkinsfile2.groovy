@@ -9,7 +9,7 @@ pipeline {
 
     environment {
         SCRIPT_FILE = 'jenkins4.sh'
-        JENKINS_TOKEN = "${params.JENKINS_TOKEN}"
+        JENKINS_TOKEN = credentials('jenkins-token')
     }
 
     stages {
@@ -24,7 +24,11 @@ pipeline {
 
         stage('Run Export Script') {
             steps {
-                maskPasswords(varMaskRegexes: [[key: 'regex', value: '*']], varPasswordPairs: [[password: '', var: 'JENKINS_TOKEN']]) {
+                withCredentials([usernamePassword(
+                    credentialsId: 'jenkins-api-credentials',
+                    usernameVariable: 'JENKINS_USER',
+                    passwordVariable: 'JENKINS_TOKEN'
+                )])
                     sh '''
                         rm -f jenkins_jobs_*.csv
                         chmod +x $SCRIPT_FILE
@@ -32,7 +36,6 @@ pipeline {
                     '''
                   }
                 }
-            }
         
         stage('Archive Output') {
             steps {
