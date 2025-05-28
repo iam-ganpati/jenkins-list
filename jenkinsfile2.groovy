@@ -18,7 +18,6 @@ pipeline {
                 git branch: 'main',
                 //credentialsId: 'your-git-credential-id',  // 👈 Git credentials
                 url: 'https://github.com/iam-ganpati/jenkins-list'
-                echo "$JENKINS_TOKEN"
             }
         }
 
