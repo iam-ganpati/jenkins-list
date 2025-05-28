@@ -22,7 +22,6 @@ pipeline {
 
         stage('Run Export Script') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'jenkins_api_creds', usernameVariable: 'JENKINS_USER', passwordVariable: 'JENKINS_TOKEN')]) {
                     sh '''
                         rm -f jenkins_jobs_*.csv
                         chmod +x $SCRIPT_FILE
@@ -30,8 +29,7 @@ pipeline {
                     '''
                 }
             }
-        }
-
+        
         stage('Archive Output') {
             steps {
                 archiveArtifacts artifacts: '*.csv', fingerprint: true
