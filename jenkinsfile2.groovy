@@ -3,7 +3,7 @@ pipeline {
 
      parameters {
         string(name: 'JENKINS_URL', defaultValue: 'http://13.217.37.46:8080/', description: 'Jenkins URL')
-        string(name: 'JENKINS_USER', defaultValue: ' ', description: 'Jenkins User')
+        string(name: 'JENKINS_USER', defaultValue: '', description: 'Jenkins User')
         password(name: 'JENKINS_TOKEN', defaultValue: '', description: 'your jenkins username')
     }
 
