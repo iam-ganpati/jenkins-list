@@ -1,8 +1,12 @@
 #!/bin/bash
 
-JENKINS_URL="$1"
-USERNAME="$2"
-API_TOKEN="$3"
+#JENKINS_URL="$1"
+#USERNAME="$2"
+#API_TOKEN="$3"
+
+JENKINS_URL="${JENKINS_URL}"
+USERNAME="${JENKINS_USER}"
+API_TOKEN="${JENKINS_TOKEN}"
 
 CSV_FILE="jenkins_jobs_$(date +%Y%m%d_%H%M%S).csv"
 echo "Job Name,Job URL,Branch" > "$CSV_FILE"
