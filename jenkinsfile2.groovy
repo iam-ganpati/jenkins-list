@@ -23,14 +23,21 @@ pipeline {
 
         stage('Run Export Script') {
            steps {
+               sh '''
+                        set +x
+                        rm -f jenkins_jobs_*.csv
+                        chmod +x $SCRIPT_FILE
+                        ./$SCRIPT_FILE "$JENKINS_URL" "$JENKINS_USER" "$JENKINS_TOKEN"
+                    '''
                 /*wrap([$class: 'MaskPasswordsBuildWrapper']){
                     sh '''
+                        set +x
                         rm -f jenkins_jobs_*.csv
                         chmod +x $SCRIPT_FILE
                         ./$SCRIPT_FILE "$JENKINS_URL" "$JENKINS_USER" "$JENKINS_TOKEN"
                     '''
                   }
-            }*/
+            }
             script {
                     // Do NOT pass the token as an argument
                     sh '''
@@ -41,7 +48,7 @@ pipeline {
                         export JENKINS_TOKEN="${JENKINS_TOKEN}"
                         ./$SCRIPT_FILE
                     '''
-                }
+                }*/
         }
                 }
         
