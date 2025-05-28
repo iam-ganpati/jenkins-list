@@ -9,7 +9,7 @@ pipeline {
 
     environment {
         SCRIPT_FILE = 'jenkins4.sh'
-        SECRET_TOKEN = "${params.JENKINS_TOKEN}"
+        #SECRET_TOKEN = "${params.JENKINS_TOKEN}"
     }
 
     stages {
