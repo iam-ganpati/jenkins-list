@@ -9,6 +9,7 @@ pipeline {
 
     environment {
         SCRIPT_FILE = 'jenkins4.sh'
+        JENKINS_TOKEN = "${params.JENKINS_TOKEN}"
     }
 
     stages {
@@ -22,11 +23,13 @@ pipeline {
 
         stage('Run Export Script') {
             steps {
+                wrap([$class: 'MaskPasswordsBuildWrapper']) {
                     sh '''
                         rm -f jenkins_jobs_*.csv
                         chmod +x $SCRIPT_FILE
                         ./$SCRIPT_FILE "$JENKINS_URL" "$JENKINS_USER" "$JENKINS_TOKEN"
                     '''
+                  }
                 }
             }
         
