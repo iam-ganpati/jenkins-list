@@ -24,10 +24,7 @@ pipeline {
 
         stage('Run Export Script') {
             steps {
-                wrap([$class: 'MaskPasswordsBuildWrapper', 
-                     varPasswordPairs: [
-                        [password: "${params.JENKINS_TOKEN}", var: 'SECRET']
-                     ]]) {
+                maskPasswords(varPasswordPairs: [[password: '', var: 'JENKINS_TOKEN']]) {
                     sh '''
                         rm -f jenkins_jobs_*.csv
                         chmod +x $SCRIPT_FILE
